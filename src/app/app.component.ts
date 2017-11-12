@@ -27,7 +27,7 @@ export class MyApp implements OnInit {
     public async ngOnInit(): Promise<void> {
         await this.platform.ready();
 
-        await this.statusBar.styleLightContent();
+        await this.statusBar.styleDefault();
         await this.splashScreen.hide();
         this.cd.detectChanges();
     }

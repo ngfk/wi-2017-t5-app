@@ -1,9 +1,54 @@
 <ion-header>
-    <ion-navbar>
+    <ion-navbar [color]="'primary' | platform:'md'">
         <ion-title>Settings</ion-title>
+        <ion-buttons end>
+            <button ion-button>Edit</button>
+        </ion-buttons>
     </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-
+<ion-content>
+    <ion-list>
+        <ion-item>
+            <div class="profile">
+                <ion-avatar class="profile--avatar">
+                    <img src="https://avatars.io/facebook/account@facebook.com/medium">
+                </ion-avatar>
+                <div class="profile--data">
+                    <h2>Facebook name</h2>
+                    <p>status message</p>
+                </div>
+            </div>
+        </ion-item>
+    </ion-list>
+    <ion-list>
+        <ion-item-divider>Accounts</ion-item-divider>
+        <button ion-item detail-none (tap)="facebook()">
+            <ion-icon name="logo-facebook" item-start></ion-icon>
+            <h2>Facebook</h2>
+            <p item-end>account@facebook.com</p>
+        </button>
+        <button ion-item detail-none (tap)="twitter()">
+            <ion-icon name="logo-twitter" item-start></ion-icon>
+            <h2>Twitter</h2>
+            <p item-end>twitter-handler</p>
+        </button>
+    </ion-list>
+    <ion-list>
+        <ion-item-divider>General</ion-item-divider>
+        <ion-item>
+            <ion-icon name="construct" item-start></ion-icon>
+            Version
+            <ion-badge item-end>0.0.1</ion-badge>
+        </ion-item>
+        <ion-item>
+            <ion-icon name="ionic" item-start></ion-icon>
+            Ionic
+            <ion-badge item-end>0.0.1</ion-badge>
+        </ion-item>
+        <button ion-item (tap)="about()">
+            <ion-icon name="information-circle" item-start></ion-icon>
+            About
+        </button>
+    </ion-list>
 </ion-content>

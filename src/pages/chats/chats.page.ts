@@ -3,8 +3,10 @@ import { IonicPage } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-    selector: 'page-about',
-    templateUrl: 'about.html',
+    selector: 'page-chats',
+    templateUrl: 'chats.html',
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AboutPage {}
+export class ChatsPage {
+    public temp = new Array(20);
+}

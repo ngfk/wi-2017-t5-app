@@ -1,7 +1,9 @@
 export enum Page {
-    Tabs = 'TabsPage',
-    Home = 'HomePage',
     About = 'AboutPage',
+    Chats = 'ChatsPage',
+    Home = 'HomePage',
+    Organize = 'OrganizePage',
     Settings = 'SettingsPage',
-    Contact = 'ContactPage'
+    Tabs = 'TabsPage',
+    Travel = 'TravelPage'
 }

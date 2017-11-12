@@ -3,8 +3,8 @@ import { IonicPage } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-    selector: 'page-about',
-    templateUrl: 'about.html',
+    selector: 'page-organize',
+    templateUrl: 'organize.html',
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AboutPage {}
+export class OrganizePage {}

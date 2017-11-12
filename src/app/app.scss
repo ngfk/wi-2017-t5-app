@@ -18,3 +18,17 @@
 ::-webkit-scrollbar {
     display: none;
 }
+
+ion-list.list {
+    &.list-md {
+        border-bottom: 1px solid #dedede;
+    }
+}
+
+ion-item-divider.item-divider {
+    &.item-divider-ios {
+        font-size: 1.5rem;
+        background-color: inherit;
+        border-bottom: 0.55px solid #c8c7cc;
+    }
+}

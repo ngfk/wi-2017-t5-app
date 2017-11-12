@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { IonicPage } from 'ionic-angular/navigation/ionic-page';
+import { IonicPage } from 'ionic-angular';
 
 import { IonIcon } from '../../models/ion-icon';
 import { Page } from '../../models/page';
@@ -21,14 +21,19 @@ export class TabsPage {
             title: 'Home'
         },
         {
-            root: Page.About,
-            icon: IonIcon.InformationCircle,
-            title: 'About'
+            root: Page.Chats,
+            icon: IonIcon.Chatboxes,
+            title: 'Chats'
         },
         {
-            root: Page.Contact,
-            icon: IonIcon.Contacts,
-            title: 'Contact'
+            root: Page.Travel,
+            icon: IonIcon.Navigate,
+            title: 'Travel'
+        },
+        {
+            root: Page.Organize,
+            icon: IonIcon.People,
+            title: 'Organize'
         },
         {
             root: Page.Settings,

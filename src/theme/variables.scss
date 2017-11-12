@@ -43,9 +43,13 @@ $colors: (
 // --------------------------------------------------
 // Material Design only Sass variables can go here
 
+$item-md-detail-push-show: true;
+
 // App Windows Variables
 // --------------------------------------------------
 // Windows only Sass variables can go here
+
+$item-wp-detail-push-show: true;
 
 // App Theme
 // --------------------------------------------------
@@ -54,7 +58,7 @@ $colors: (
 // so that the above variables are used and Ionic's
 // default are overridden.
 
-@import 'ionic.theme.dark';
+@import 'ionic.theme.default';
 
 // Ionicons
 // --------------------------------------------------

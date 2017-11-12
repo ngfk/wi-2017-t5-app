@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { IonicPage } from 'ionic-angular/navigation/ionic-page';
+import { IonicPage } from 'ionic-angular';
 
 @IonicPage()
 @Component({

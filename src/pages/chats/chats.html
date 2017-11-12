@@ -1,0 +1,18 @@
+<ion-header>
+    <ion-navbar [color]="'primary' | platform:'md'">
+        <ion-title>Chats</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-list>
+        <button ion-item detail-none *ngFor="let t of temp; let i = index">
+            <ion-avatar item-start>
+                <img src="https://avatars.io/facebook/account@facebook.com/medium">
+            </ion-avatar>
+            <h2>User {{i + 1}}</h2>
+            <p>last message</p>
+            <ion-note item-end>00:00AM</ion-note>
+        </button>
+    </ion-list>
+</ion-content>
