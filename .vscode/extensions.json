@@ -1,0 +1,8 @@
+{
+    "recommendations": [
+        "eg2.tslint",
+        "robertohuertasm.vscode-icons",
+        "rbbit.typescript-hero",
+        "esbenp.prettier-vscode"
+    ]
+}
