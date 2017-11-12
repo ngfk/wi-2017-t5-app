@@ -7,6 +7,14 @@ export class StatusBarMock extends StatusBar {
         // Do nothing, prevents warning when in a browser.
     }
 
+    public styleBlackOpaque(): void {
+        // Do nothing, prevents warning when in a browser.
+    }
+
+    public styleBlackTranslucent(): void {
+        // Do nothing, prevents warning when in a browser.
+    }
+
     public styleDefault(): void {
         // Do nothing, prevents warning when in a browser.
     }
