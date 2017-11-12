@@ -29,6 +29,11 @@ export class TabsPage {
             root: Page.Contact,
             icon: IonIcon.Contacts,
             title: 'Contact'
+        },
+        {
+            root: Page.Settings,
+            icon: IonIcon.Settings,
+            title: 'Settings'
         }
     ];
 
