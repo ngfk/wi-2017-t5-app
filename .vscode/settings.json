@@ -10,6 +10,8 @@
         ".sourcemaps": true,
         "node_modules": true,
         "platforms": true,
+        "plugins": true,
+        "resources": true,
         "www": true,
 
         "ionic.config.json": true,

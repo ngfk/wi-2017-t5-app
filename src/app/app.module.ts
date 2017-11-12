@@ -12,9 +12,11 @@ const native = !(
     document.URL.startsWith('https://') || document.URL.startsWith('http://')
 );
 
-const withMock = (actual: any, mock: any) => {
+// tslint:disable only-arrow-functions
+export function withMock(actual: any, mock: any) {
     return native ? actual : { provide: actual, useClass: mock };
-};
+}
+// tslint:enable only-arrow-functions
 
 @NgModule({
     bootstrap: [IonicApp],
