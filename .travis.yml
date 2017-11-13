@@ -9,6 +9,7 @@ install:
 
 script:
   - npm run build || true
+  - cp -R node_modules/@ionic/app-scripts/lab www/ionic-lab
 
 deploy:
   provider: pages
