@@ -8,12 +8,16 @@
     "scripts": {
         "start": "ionic serve -p 8080 --no-open",
         "clean": "ionic clean",
-        "build": "ionic build",
+        "build": "ionic build --prod && npm run copy:lab",
         "ios": "ionic cordova run ios --prod",
         "android": "ionic cordova run android --prod",
         "resources": "ionic cordova resources",
         "format": "ts-node -P ./scripts/tsconfig.json scripts/format.ts",
-        "commit": "ts-node -P ./scripts/tsconfig.json scripts/commit.ts"
+        "commit": "ts-node -P ./scripts/tsconfig.json scripts/commit.ts",
+        "copy:lab": "npm run copy:lab:u || npm run copy:lab:w",
+        "copy:lab:u": "cp -R node_modules/@ionic/app-scripts/lab www/ionic-lab",
+        "copy:lab:w":
+            "robocopy node_modules/@ionic/app-scripts/lab www/ionic-lab /s /e"
     },
     "dependencies": {
         "@angular/common": "5.0.0",
