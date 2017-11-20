@@ -1,0 +1,25 @@
+page-chat {
+    ion-list.list {
+        &.list-md {
+            border-bottom: none;
+        }
+    }
+
+    ion-toolbar.toolbar {
+        ion-textarea {
+            background-color: #fff;
+            border: solid 1px #dedede;
+            border-radius: 5px;
+            
+            textarea {
+                padding: 2px 0 0 5px;
+                margin: 0;
+            }
+        }
+
+        ion-buttons.bar-buttons[end] {
+            padding-left: 10px;
+            padding-right: 2px;
+        }
+    }
+}
