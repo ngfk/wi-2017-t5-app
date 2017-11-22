@@ -4,6 +4,52 @@ page-chat {
             border-bottom: none;
         }
     }
+    
+    .chat {
+        display: flex;
+        flex-flow: column nowrap;
+        padding-top: 16px;
+        
+        &> .chat-entry {
+            align-self: flex-start;
+            width: auto;
+            max-width: 75%;
+            min-height: 0;
+            padding: 5px 8px 1px;
+            margin: 0 16px;
+            border-radius: 10px;
+            background-color: map-get($colors, 'light');
+
+            &> .item-inner {
+                padding: 0;
+
+                ion-label.label {
+                    margin: 0;
+                }
+            }
+
+            &.chat-entry--alt {
+                align-self: flex-end;
+                background-color: map-get($colors, 'secondary');
+            }
+    
+            .chat-entry__from {
+                color: map-get($colors, 'primary');
+                font-size: .7em;
+            }
+
+            .chat-entry__content {
+                display: inline-block;
+                font-size: .8em;
+                padding-bottom: 4px;
+            }
+
+            .chat-entry__timestamp {
+                display: inline-block;
+                font-size: .5em;
+            }
+        }
+    }
 
     ion-toolbar.toolbar {
         ion-textarea {

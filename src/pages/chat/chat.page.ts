@@ -28,7 +28,6 @@ export class ChatPage {
             },
             {
                 timestamp: new Date(),
-                from: 'Someone else',
                 content: 'Hey!'
             }
         ];

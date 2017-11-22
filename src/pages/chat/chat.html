@@ -5,9 +5,21 @@
 </ion-header>
 
 <ion-content>
-    <ion-list no-lines no-padding>
-        <ion-item *ngFor="let entry of chat">
-            {{entry | json}}
+    <ion-list no-lines no-padding class="chat">
+        <ion-item
+            *ngFor="let entry of chat"
+            class="chat-entry"
+            [class.chat-entry--alt]="!entry.from"
+        >
+            <div *ngIf="entry.from" class="chat-entry__from">
+                {{entry.from}}
+            </div>
+            <div class="chat-entry__content">
+                {{entry.content}}
+            </div>
+            <div class="chat-entry__timestamp">
+                {{entry.timestamp | date:'hh:mm a'}}
+            </div>
         </ion-item>
     </ion-list>
 </ion-content>
