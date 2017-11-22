@@ -15,7 +15,8 @@ export class EnvService {
     constructor(private ionPlatform: Platform, private device: Device) {
         this.native = !(
             document.URL.startsWith('https://') ||
-            document.URL.startsWith('http://')
+            document.URL.startsWith('http://') ||
+            window.self !== window.top
         );
     }
 

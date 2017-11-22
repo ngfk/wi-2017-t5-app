@@ -13,7 +13,9 @@ import { StatusBarMock } from '../services/mocking/status-bar.mock';
 import { MyApp } from './app.component';
 
 const native = !(
-    document.URL.startsWith('https://') || document.URL.startsWith('http://')
+    document.URL.startsWith('https://') ||
+    document.URL.startsWith('http://') ||
+    window.self !== window.top
 );
 
 // tslint:disable only-arrow-functions
