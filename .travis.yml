@@ -23,6 +23,11 @@ deploy:
   local_dir: www
   target_branch: gh-pages
 
+cache:
+  directories:
+    - 'node_modules'
+    - 'www'
+
 notifications:
   email:
     on_success: never
