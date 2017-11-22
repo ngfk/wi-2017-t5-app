@@ -1,6 +1,6 @@
 var $ = document.querySelector.bind(document);
 
-var API_ROOT = '/ionic-lab/api/v1';
+var API_ROOT = '/wi-2017-t5-app/ionic-lab/api/v1';
 
 var APP_CONFIG = {};
 
