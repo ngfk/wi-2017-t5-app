@@ -12,15 +12,14 @@ import { SplashScreenMock } from '../services/mocking/splash-screen.mock';
 import { StatusBarMock } from '../services/mocking/status-bar.mock';
 import { MyApp } from './app.component';
 
-const native = !(
-    document.URL.startsWith('https://') ||
-    document.URL.startsWith('http://') ||
-    window.self !== window.top
-);
-
 // tslint:disable only-arrow-functions
 export function withMock(actual: any, mock: any) {
-    return native ? actual : { provide: actual, useClass: mock };
+    return !(
+        document.URL.startsWith('https://') ||
+        document.URL.startsWith('http://')
+    )
+        ? actual
+        : { provide: actual, useClass: mock };
 }
 // tslint:enable only-arrow-functions
 
