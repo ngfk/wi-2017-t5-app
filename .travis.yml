@@ -12,6 +12,7 @@ script:
   - cp -R node_modules/@ionic/app-scripts/lab www/ionic-lab
   - cp config/ionic-lab.html www/ionic-lab/index.html
   - cp config/ionic-lab.css www/ionic-lab/static/css/style.css
+  - cp config/ionic-lab.js www/ionic-lab/static/js/lab.js
 
 deploy:
   provider: pages
