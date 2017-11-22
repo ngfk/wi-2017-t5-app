@@ -290,7 +290,7 @@ function setCordovaInfo(data) {
 }
 
 function loadCordova() {
-    var req = new XMLHttpsRequest();
+    var req = new XMLHttpRequest();
     req.addEventListener('load', function(e) {
         setCordovaInfo(JSON.parse(req.response));
     });
