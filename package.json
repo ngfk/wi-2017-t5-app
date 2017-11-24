@@ -6,7 +6,7 @@
     "homepage": "http://ionicframework.com/",
     "private": true,
     "scripts": {
-        "start": "ionic serve -p 8080 --no-open",
+        "start": "ionic serve -p 8100 --no-open",
         "clean": "ionic clean",
         "build": "ionic build --prod",
         "ios": "ionic cordova run ios --prod",
