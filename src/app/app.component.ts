@@ -7,8 +7,10 @@ import {
 } from '@angular/core';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
-import { Events, Nav, Platform } from 'ionic-angular';
+import { Nav, Platform } from 'ionic-angular';
 
+import { IonIcon } from '../models/ion-icon';
+import { Menu, MenuEntry } from '../models/menu';
 import { Page } from '../models/page';
 
 @Component({
@@ -16,7 +18,8 @@ import { Page } from '../models/page';
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MyApp implements OnInit {
-    public rootPage = Page.Tabs;
+    public rootPage = Page.Home;
+    public menu: Menu;
 
     @ViewChild(Nav) private nav: Nav;
 
@@ -24,21 +27,45 @@ export class MyApp implements OnInit {
         private cd: ChangeDetectorRef,
         private platform: Platform,
         private statusBar: StatusBar,
-        private splashScreen: SplashScreen,
-        private events: Events
+        private splashScreen: SplashScreen
     ) {}
 
     public async ngOnInit(): Promise<void> {
         await this.platform.ready();
 
-        this.events.subscribe('app:nav', this.onNav);
+        this.initializeMenu();
 
         await this.statusBar.styleDefault();
         await this.splashScreen.hide();
         this.cd.detectChanges();
     }
 
-    public onNav = (page: Page, params: any): void => {
-        this.nav.push(page, params);
-    };
+    public openMenu(entry: MenuEntry): void {
+        this.nav.setRoot(entry.page);
+    }
+
+    private initializeMenu(): void {
+        this.menu = [
+            {
+                page: Page.Home,
+                icon: IonIcon.Home,
+                title: 'Home'
+            },
+            {
+                page: Page.Chat,
+                icon: IonIcon.Chatboxes,
+                title: 'Chat'
+            },
+            {
+                page: Page.Travel,
+                icon: IonIcon.Navigate,
+                title: 'Travel'
+            },
+            {
+                page: Page.Settings,
+                icon: IonIcon.Settings,
+                title: 'Settings'
+            }
+        ];
+    }
 }

@@ -3,27 +3,20 @@ import { IonicPage, NavParams } from 'ionic-angular';
 
 import { Chat } from '../../models/chat';
 
-@IonicPage({
-    segment: 'chat/:user',
-    defaultHistory: ['TabsPage']
-})
+@IonicPage()
 @Component({
     selector: 'page-chat',
     templateUrl: 'chat.html',
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ChatPage {
-    public readonly user: number;
-
     public readonly chat: Chat;
 
     constructor(private navParams: NavParams) {
-        this.user = (this.navParams.data || {}).user;
-
         this.chat = [
             {
                 timestamp: new Date(),
-                from: 'User ' + this.user,
+                from: 'Watson',
                 content: 'Hello World!'
             },
             {
