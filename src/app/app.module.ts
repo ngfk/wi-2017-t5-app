@@ -6,6 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
+import { EnvService } from '../services/env.service';
 import { DeviceMock } from '../services/mocking/device.mock';
 import { GoogleMapsMock } from '../services/mocking/google-maps.mock';
 import { SplashScreenMock } from '../services/mocking/splash-screen.mock';
@@ -40,7 +41,9 @@ export function withMock(actual: any, mock: any) {
         withMock(Device, DeviceMock),
         withMock(StatusBar, StatusBarMock),
         withMock(SplashScreen, SplashScreenMock),
-        withMock(GoogleMaps, GoogleMapsMock)
+        withMock(GoogleMaps, GoogleMapsMock),
+        // Custom
+        EnvService
     ]
 })
 export class AppModule {}
