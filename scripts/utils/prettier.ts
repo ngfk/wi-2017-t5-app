@@ -2,8 +2,8 @@ import { spawn } from './child_process';
 
 export const format = (...files: string[]): Promise<number> => {
     const fileInclude = files.length
-        ? files.filter(f => f.match(/\.(ts|js|json)$/))
-        : ['**/*.{ts,js,json}'];
+        ? files.filter(f => f.match(/\.(ts|js|json|scss)$/))
+        : ['**/*.{ts,js,json,scss}'];
 
     const fileIgnore = ['package-lock.json'];
 

@@ -7,8 +7,8 @@ page-chat {
         &.list-md {
             border-bottom: none;
         }
-        
-        &> .chat-entry {
+
+        & > .chat-entry {
             align-self: flex-start;
             width: auto;
             max-width: 75%;
@@ -18,7 +18,7 @@ page-chat {
             border-radius: 10px;
             background-color: map-get($colors, 'light');
 
-            &> .item-inner {
+            & > .item-inner {
                 padding: 0;
 
                 ion-label.label {
@@ -30,21 +30,21 @@ page-chat {
                 align-self: flex-end;
                 background-color: map-get($colors, 'secondary');
             }
-    
+
             .chat-entry__from {
                 color: map-get($colors, 'primary');
-                font-size: .8em;
+                font-size: 0.8em;
             }
 
             .chat-entry__content {
                 display: inline-block;
-                font-size: .9em;
+                font-size: 0.9em;
                 padding-bottom: 4px;
             }
 
             .chat-entry__timestamp {
                 display: inline-block;
-                font-size: .6em;
+                font-size: 0.6em;
                 font-style: italic;
                 color: lighten(#000, 25);
             }
@@ -56,7 +56,7 @@ page-chat {
             background-color: #fff;
             border: solid 1px #dedede;
             border-radius: 5px;
-            
+
             textarea {
                 padding: 2px 0 0 5px;
                 margin: 0;
