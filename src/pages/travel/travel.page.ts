@@ -12,6 +12,8 @@ import {
 } from '@ionic-native/google-maps';
 import { IonicPage } from 'ionic-angular';
 
+import { EnvService } from '../../services/env.service';
+
 @IonicPage()
 @Component({
     selector: 'page-travel',
@@ -24,7 +26,8 @@ export class TravelPage {
 
     constructor(
         private cd: ChangeDetectorRef,
-        private googleMaps: GoogleMaps
+        private googleMaps: GoogleMaps,
+        private env: EnvService
     ) {}
 
     public async ionViewDidLoad(): Promise<void> {
@@ -40,11 +43,9 @@ export class TravelPage {
             styles
         };
 
-        const creator =
-            document.URL.startsWith('https://') ||
-            document.URL.startsWith('http://')
-                ? this.googleMaps.create(elem, options)
-                : GoogleMaps.create(elem, options);
+        const creator = this.env.native
+            ? this.googleMaps.create(elem, options)
+            : GoogleMaps.create(elem, options);
 
         this.map = await creator;
         this.cd.detectChanges();
