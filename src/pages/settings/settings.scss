@@ -1,15 +1,14 @@
-
 page-settings {
     .profile {
         display: flex;
 
-        .profile--avatar img {
+        .profile__avatar img {
             width: 90px;
             height: 90px;
             border: 1px solid #dedede;
         }
 
-        .profile--data {
+        .profile__data {
             padding: 20px;
         }
     }

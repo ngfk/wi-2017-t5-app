@@ -1,6 +1,5 @@
 // http://ionicframework.com/docs/theming/
 
-
 // App Global Sass
 // --------------------------------------------------
 // Put style rules here that you want to apply globally. These
@@ -30,5 +29,29 @@ ion-item-divider.item-divider {
         font-size: 1.5rem;
         background-color: inherit;
         border-bottom: 0.55px solid #c8c7cc;
+    }
+}
+
+ion-menu {
+    .profile {
+        display: flex;
+        align-items: center;
+
+        .profile__avatar {
+            margin: 0 10px;
+            width: 90px;
+            height: 90px;
+            border: 1px solid #dedede;
+            border-radius: 50%;
+        }
+
+        .profile__data {
+            padding: 10px;
+            color: #fff;
+
+            :last-child {
+                font-style: italic;
+            }
+        }
     }
 }
