@@ -17,7 +17,8 @@ page-chat {
             padding: 5px 8px 1px;
             margin: 5px 16px;
             border-radius: 10px;
-            background-color: map-get($colors, 'light');
+            background-color: darken($background-color, 5%);
+            border: 1px solid darken($background-color, 15%);
 
             & > .item-inner {
                 padding: 0;
@@ -52,7 +53,7 @@ page-chat {
                 font-size: 0.6em;
                 font-style: italic;
                 padding: 1px;
-                color: lighten(#000, 25);
+                color: lighten($text-color, 25%);
             }
         }
     }
@@ -61,8 +62,7 @@ page-chat {
         min-height: 0;
 
         ion-textarea {
-            background-color: #fff;
-            border: solid 1px #dedede;
+            border: 1px solid darken($background-color, 5%);
             border-radius: 5px;
 
             textarea {
