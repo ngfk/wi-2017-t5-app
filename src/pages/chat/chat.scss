@@ -3,6 +3,7 @@ page-chat {
         display: flex;
         flex-flow: column nowrap;
         padding-top: 16px;
+        margin: -1px 0 15px;
 
         &.list-md {
             border-bottom: none;
@@ -43,7 +44,7 @@ page-chat {
 
             .chat-entry__content {
                 font-size: 0.9em;
-                padding: 2px 20px 0 0;
+                padding: 2px 5px 0 0;
                 white-space: pre-wrap;
                 line-height: 1.2em;
             }

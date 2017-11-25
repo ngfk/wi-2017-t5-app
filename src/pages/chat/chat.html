@@ -26,9 +26,21 @@
 </ion-content>
 <ion-footer>
     <ion-toolbar>
-        <ion-textarea placeholder="Write a message..."></ion-textarea>
+        <ion-textarea
+            #input
+            placeholder="Write a message..."
+            spellcheck="true"
+            aria-autocomplete="on"
+            autocorrect="on"
+        >
+        </ion-textarea>
         <ion-buttons end>
-            <button ion-button icon-only color="primary">
+            <button
+                ion-button
+                icon-only
+                color="primary"
+                (click)="send(input.value)"
+            >
                 <ion-icon name="send"></ion-icon>
             </button>
         </ion-buttons>

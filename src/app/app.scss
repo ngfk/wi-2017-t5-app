@@ -68,6 +68,10 @@ ion-item-divider.item-divider {
     }
 }
 
+ion-textarea {
+    color: $text-color;
+}
+
 ::-webkit-scrollbar {
     display: none;
 }
