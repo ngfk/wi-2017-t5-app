@@ -44,8 +44,8 @@ export class TravelPage {
         };
 
         const creator = this.env.native
-            ? this.googleMaps.create(elem, options)
-            : GoogleMaps.create(elem, options);
+            ? GoogleMaps.create(elem, options)
+            : this.googleMaps.create(elem, options);
 
         this.map = await creator;
         this.cd.detectChanges();

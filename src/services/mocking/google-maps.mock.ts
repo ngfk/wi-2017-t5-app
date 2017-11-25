@@ -22,7 +22,8 @@ export class GoogleMapsMock extends GoogleMaps {
             ? {
                   ...options,
                   ...options.camera,
-                  center: (options.camera || {}).target
+                  center: (options.camera || {}).target,
+                  disableDefaultUI: true
               }
             : undefined;
 
