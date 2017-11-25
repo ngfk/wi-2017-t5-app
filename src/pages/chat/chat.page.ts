@@ -22,6 +22,22 @@ export class ChatPage {
             {
                 timestamp: new Date(),
                 content: 'Hey!'
+            },
+            {
+                timestamp: new Date(),
+                from: 'Watson',
+                content:
+                    // tslint:disable-next-line max-line-length
+                    'Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium ab numquam porro. Odit harum totam voluptas laudantium modi ea laborum, omnis velit in, soluta incidunt architecto nobis quo magni dolore!'
+            },
+            {
+                timestamp: new Date(),
+                content: '...'
+            },
+            {
+                timestamp: new Date(),
+                content:
+                    "<b>Test</b>\n<script>\n  console.log('test')\n</script>"
             }
         ];
     }

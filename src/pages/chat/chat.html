@@ -17,9 +17,7 @@
             <div *ngIf="entry.from" class="chat-entry__from">
                 {{entry.from}}
             </div>
-            <div class="chat-entry__content">
-                {{entry.content}}
-            </div>
+            <div class="chat-entry__content">{{entry.content}}</div>
             <div class="chat-entry__timestamp">
                 {{entry.timestamp | date:'hh:mm a'}}
             </div>
