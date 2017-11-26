@@ -60,6 +60,7 @@ export class ChatPage implements OnInit, OnDestroy {
         setTimeout(() => this.contentField.scrollToBottom(0), 0);
     }
 
+    public sendAttachment(): void {}
     public sendAudio(): void {}
 
     public sendText(text: string): void {
