@@ -107,8 +107,18 @@ page-chat {
             }
         }
 
-        ion-buttons.bar-buttons[end] {
-            padding: 0 5px;
+        ion-buttons.bar-button-ios[icon-only] {
+            padding: inherit;
+        }
+
+        ion-buttons.bar-buttons {
+            &[left] {
+                padding: 0 8px 0 5px;
+            }
+
+            &[right] {
+                padding: 0 5px 0 8px;
+            }
         }
     }
 }
