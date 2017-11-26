@@ -60,6 +60,8 @@ export class ChatPage implements OnInit, OnDestroy {
         setTimeout(() => this.contentField.scrollToBottom(0), 0);
     }
 
+    public sendAudio(): void {}
+
     public sendText(text: string): void {
         text = text.trim();
 

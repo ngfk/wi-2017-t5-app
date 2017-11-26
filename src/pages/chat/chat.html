@@ -44,7 +44,17 @@
                 ion-button
                 icon-only
                 color="primary"
+                (click)="sendAudio()"
+                *ngIf="!input.value"
+            >
+                <ion-icon name="microphone"></ion-icon>
+            </button>
+            <button
+                ion-button
+                icon-only
+                color="primary"
                 (click)="sendText(input.value)"
+                *ngIf="!!input.value"
             >
                 <ion-icon name="send"></ion-icon>
             </button>
