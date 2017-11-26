@@ -15,8 +15,7 @@ page-chat {
             min-width: 20%;
             max-width: 75%;
             min-height: 0;
-            padding: 5px 8px 1px;
-            margin: 5px 16px;
+            margin: 2px 16px;
             border-radius: 10px;
 
             & > .item-inner {
@@ -38,6 +37,7 @@ page-chat {
             }
 
             &.chat-entry--text {
+                padding: 5px 8px 1px;
                 background-color: darken($background-color, 5%);
                 border: 1px solid darken($background-color, 15%);
 
@@ -46,7 +46,6 @@ page-chat {
                 }
 
                 .chat-entry__content {
-                    font-size: 0.9em;
                     padding: 2px 5px 0 0;
                     white-space: pre-wrap;
                     line-height: 1.2em;
@@ -59,11 +58,11 @@ page-chat {
                     border-radius: 4px;
                     background-color: darken($background-color, 5%);
                     border: 1px solid darken($background-color, 15%);
-                    padding: 2px 3px;
+                    padding: 1px 4px;
                 }
 
                 .chat-entry__from {
-                    margin-bottom: 2px;
+                    margin: 0 4px 2px;
                 }
 
                 .chat-entry__timestamp {
@@ -79,12 +78,12 @@ page-chat {
             .chat-entry__from {
                 align-self: flex-start;
                 color: map-get($colors, 'primary');
-                font-size: 0.8em;
+                font-size: 0.9em;
             }
 
             .chat-entry__timestamp {
                 align-self: flex-end;
-                font-size: 0.6em;
+                font-size: 0.65em;
                 font-style: italic;
                 padding: 1px;
                 color: lighten($text-color, 25%);
@@ -96,8 +95,9 @@ page-chat {
         min-height: 0;
 
         ion-textarea {
-            border: 1px solid darken($background-color, 5%);
-            border-radius: 5px;
+            background-color: lighten($background-color, 10%);
+            border: 1px solid darken($background-color, 10%);
+            border-radius: 8px;
 
             textarea {
                 padding: 2px 0 0 5px;
@@ -108,8 +108,7 @@ page-chat {
         }
 
         ion-buttons.bar-buttons[end] {
-            padding-left: 10px;
-            padding-right: 6px;
+            padding: 0 4px 0 5px;
         }
     }
 }
