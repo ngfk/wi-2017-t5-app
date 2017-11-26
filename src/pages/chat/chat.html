@@ -11,15 +11,20 @@
     <ion-list no-lines no-padding class="chat">
         <ion-item
             *ngFor="let entry of chat"
-            class="chat-entry"
+            class="chat-entry chat-entry--{{entry.type}}"
             [class.chat-entry--alt]="!entry.from"
         >
-            <div *ngIf="entry.from" class="chat-entry__from">
-                {{entry.from}}
+            <div *ngIf="entry.type === 'text'">
+                <div *ngIf="entry.from" class="chat-entry__from">{{entry.from}}</div>
+                <div class="chat-entry__content">{{entry.content.text}}</div>
+                <div class="chat-entry__timestamp">{{entry.timestamp | date:'hh:mm a'}}</div>
             </div>
-            <div class="chat-entry__content">{{entry.content}}</div>
-            <div class="chat-entry__timestamp">
-                {{entry.timestamp | date:'hh:mm a'}}
+            <div *ngIf="entry.type === 'image'">
+                <div *ngIf="entry.from" class="chat-entry__from">{{entry.from}}</div>
+                <div class="chat-entry__content">
+                    <img [src]="entry.content.image" [alt]="entry.content.title">
+                </div>
+                <div class="chat-entry__timestamp">{{entry.timestamp | date:'hh:mm a'}}</div>
             </div>
         </ion-item>
     </ion-list>
@@ -39,7 +44,7 @@
                 ion-button
                 icon-only
                 color="primary"
-                (click)="send(input.value)"
+                (click)="sendText(input.value)"
             >
                 <ion-icon name="send"></ion-icon>
             </button>

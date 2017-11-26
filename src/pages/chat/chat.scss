@@ -18,35 +18,68 @@ page-chat {
             padding: 5px 8px 1px;
             margin: 5px 16px;
             border-radius: 10px;
-            background-color: darken($background-color, 5%);
-            border: 1px solid darken($background-color, 15%);
 
             & > .item-inner {
                 padding: 0;
 
                 ion-label.label {
-                    display: flex;
-                    flex-flow: column nowrap;
                     margin: 0;
                     white-space: normal;
+
+                    & > div {
+                        display: flex;
+                        flex-flow: column nowrap;
+                    }
                 }
             }
 
             &.chat-entry--alt {
                 align-self: flex-end;
-                background-color: map-get($colors, 'secondary');
+            }
+
+            &.chat-entry--text {
+                background-color: darken($background-color, 5%);
+                border: 1px solid darken($background-color, 15%);
+
+                &.chat-entry--alt {
+                    background-color: map-get($colors, 'secondary');
+                }
+
+                .chat-entry__content {
+                    font-size: 0.9em;
+                    padding: 2px 5px 0 0;
+                    white-space: pre-wrap;
+                    line-height: 1.2em;
+                }
+            }
+
+            &.chat-entry--image {
+                .chat-entry__from,
+                .chat-entry__timestamp {
+                    border-radius: 4px;
+                    background-color: darken($background-color, 5%);
+                    border: 1px solid darken($background-color, 15%);
+                    padding: 2px 3px;
+                }
+
+                .chat-entry__from {
+                    margin-bottom: 2px;
+                }
+
+                .chat-entry__timestamp {
+                    margin-top: -2px;
+                }
+
+                .chat-entry__content img {
+                    border: 1px solid darken($background-color, 15%);
+                    border-radius: 10px;
+                }
             }
 
             .chat-entry__from {
+                align-self: flex-start;
                 color: map-get($colors, 'primary');
                 font-size: 0.8em;
-            }
-
-            .chat-entry__content {
-                font-size: 0.9em;
-                padding: 2px 5px 0 0;
-                white-space: pre-wrap;
-                line-height: 1.2em;
             }
 
             .chat-entry__timestamp {
