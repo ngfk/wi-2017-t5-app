@@ -4,6 +4,11 @@
             <ion-icon name="menu"></ion-icon>
         </button>
         <ion-title>Watson</ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only (click)="reload()">
+                <ion-icon name="refresh"></ion-icon>
+            </button>
+        </ion-buttons>
     </ion-navbar>
 </ion-header>
 
@@ -16,13 +21,13 @@
         >
             <div *ngIf="entry.type === 'text'">
                 <div *ngIf="entry.from" class="chat-entry__from">{{entry.from}}</div>
-                <div class="chat-entry__content">{{entry.content.text}}</div>
+                <div class="chat-entry__content">{{entry.text}}</div>
                 <div class="chat-entry__timestamp">{{entry.timestamp | date:'hh:mm a'}}</div>
             </div>
             <div *ngIf="entry.type === 'image'">
                 <div *ngIf="entry.from" class="chat-entry__from">{{entry.from}}</div>
                 <div class="chat-entry__content">
-                    <img [src]="entry.content.image" [alt]="entry.content.title">
+                    <img [src]="entry.image" [alt]="entry.title">
                 </div>
                 <div class="chat-entry__timestamp">{{entry.timestamp | date:'hh:mm a'}}</div>
             </div>

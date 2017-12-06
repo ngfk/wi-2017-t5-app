@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { Device } from '@ionic-native/device';
@@ -7,6 +8,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
+import { ConversationService } from '../services/conversation.service';
 import { EnvService } from '../services/env.service';
 import { DeviceMock } from '../services/mocking/device.mock';
 import { GoogleMapsMock } from '../services/mocking/google-maps.mock';
@@ -33,6 +35,7 @@ export function withMock(actual: any, mock: any) {
     imports: [
         // Angular
         BrowserModule,
+        HttpClientModule,
         // Ionic
         IonicModule.forRoot(MyApp)
     ],
@@ -46,7 +49,8 @@ export function withMock(actual: any, mock: any) {
         withMock(Keyboard, KeyboardMock),
         withMock(GoogleMaps, GoogleMapsMock),
         // Custom
-        EnvService
+        EnvService,
+        ConversationService
     ]
 })
 export class AppModule {}

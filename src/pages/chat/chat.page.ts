@@ -19,6 +19,7 @@ import {
 import { Subscription } from 'rxjs/Subscription';
 
 import { Chat, ChatEntry, ChatType } from '../../models/chat';
+import { ConversationService } from '../../services/conversation.service';
 import { chat } from './temp';
 
 @IonicPage()
@@ -40,7 +41,8 @@ export class ChatPage implements OnInit, OnDestroy {
         private renderer: Renderer,
         private platform: Platform,
         private navParams: NavParams,
-        private keyboard: Keyboard
+        private keyboard: Keyboard,
+        private conversation: ConversationService
     ) {}
 
     public ngOnInit(): void {
@@ -48,6 +50,14 @@ export class ChatPage implements OnInit, OnDestroy {
             this.keyboard.onKeyboardShow().subscribe(this.onKeyboardShow),
             this.keyboard.onKeyboardHide().subscribe(this.onKeyboardHide)
         ];
+
+        if (this.chat.length === chat.length) {
+            this.conversation.message().subscribe(entry => {
+                this.chat.push(entry);
+                this.cd.detectChanges();
+                this.contentField.scrollToBottom(400);
+            });
+        }
     }
 
     public ngOnDestroy(): void {
@@ -60,6 +70,10 @@ export class ChatPage implements OnInit, OnDestroy {
         setTimeout(() => this.contentField.scrollToBottom(0), 0);
     }
 
+    public reload(): void {
+        window.location.reload();
+    }
+
     public sendAttachment(): void {}
     public sendAudio(): void {}
 
@@ -70,9 +84,15 @@ export class ChatPage implements OnInit, OnDestroy {
             const newEntry: ChatEntry = {
                 timestamp: new Date(),
                 type: ChatType.Text,
-                content: { text }
+                text
             };
             this.chat.push(newEntry);
+
+            this.conversation.message(newEntry).subscribe(response => {
+                this.chat.push(response);
+                this.cd.detectChanges();
+                this.contentField.scrollToBottom(400);
+            });
         }
 
         this.inputField.value = '';

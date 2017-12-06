@@ -1,12 +1,3 @@
-export interface ChatEntryText {
-    readonly text: string;
-}
-
-export interface ChatEntryImage {
-    readonly title: string;
-    readonly image: string;
-}
-
 export enum ChatType {
     Text = 'text',
     Image = 'image'
@@ -17,11 +8,23 @@ export interface ChatTypeMap {
     image: ChatEntryImage;
 }
 
-export interface ChatEntry<T extends ChatType = ChatType.Text> {
+export interface ChatEntryBase {
+    readonly type: ChatType;
     readonly timestamp: Date;
     readonly from?: string;
-    readonly type: T;
-    readonly content: ChatTypeMap[T];
 }
 
-export interface Chat extends Array<ChatEntry<ChatType>> {}
+export interface ChatEntryText extends ChatEntryBase {
+    readonly type: ChatType.Text;
+    readonly text: string;
+}
+
+export interface ChatEntryImage extends ChatEntryBase {
+    readonly type: ChatType.Image;
+    readonly title: string;
+    readonly image: string;
+}
+
+export type ChatEntry = ChatEntryText | ChatEntryImage;
+
+export interface Chat extends Array<ChatEntry> {}
