@@ -7,15 +7,22 @@ import { mergeMap } from 'rxjs/operators/mergeMap';
 import { share } from 'rxjs/operators/share';
 
 import { ChatEntry, ChatEntryText, ChatType } from '../models/chat';
+import { EnvService } from './env.service';
 import { LoginService } from './login.service';
 
 type ConversationMessage = { text: string[] };
 
 @Injectable()
 export class ConversationService {
-    private readonly endpoint = 'https://wi-2017-t5.eu-gb.mybluemix.net/api/conversation';
+    private readonly endpoint: string;
 
-    constructor(private http: HttpClient, private login: LoginService) {}
+    constructor(
+        private http: HttpClient,
+        private env: EnvService,
+        private login: LoginService
+    ) {
+        this.endpoint = this.env.backend + '/api/conversation';
+    }
 
     public message(entry?: ChatEntryText): Observable<ChatEntry> {
         const uri = this.endpoint + '/message';

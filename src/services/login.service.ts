@@ -7,10 +7,12 @@ import { EnvService } from './env.service';
 
 @Injectable()
 export class LoginService {
-    private readonly endpoint = 'https://wi-2017-t5.eu-gb.mybluemix.net/api/login';
+    private readonly endpoint: string;
     private _token: string;
 
-    constructor(private http: HttpClient, private env: EnvService) {}
+    constructor(private http: HttpClient, private env: EnvService) {
+        this.endpoint = this.env.backend + '/api/login';
+    }
 
     public async initialize(): Promise<void> {
         if (this.load()) return;
