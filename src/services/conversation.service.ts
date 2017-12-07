@@ -5,41 +5,32 @@ import { from } from 'rxjs/observable/from';
 import { map } from 'rxjs/operators/map';
 import { mergeMap } from 'rxjs/operators/mergeMap';
 import { share } from 'rxjs/operators/share';
-import { tap } from 'rxjs/operators/tap';
 
 import { ChatEntry, ChatEntryText, ChatType } from '../models/chat';
+import { LoginService } from './login.service';
 
-type ConversationMessage = { context: any; text: string[] };
+type ConversationMessage = { text: string[] };
 
 @Injectable()
 export class ConversationService {
     private readonly endpoint = 'https://wi-2017-t5.eu-gb.mybluemix.net/api/conversation';
-    private context: any;
 
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient, private login: LoginService) {}
 
     public message(entry?: ChatEntryText): Observable<ChatEntry> {
         const uri = this.endpoint + '/message';
 
-        const headers = new HttpHeaders().set(
-            'Content-Type',
-            'application/json'
-        );
+        const headers = new HttpHeaders()
+            .set('Content-Type', 'application/json')
+            .set('Authorization', `Bearer ${this.login.getToken()}`);
 
-        const params = {
-            input: { text: entry && entry.text },
-            context: this.context
-        };
+        const params = { text: entry && entry.text };
 
-        const request$ = this.http.post<ConversationMessage>(uri, params, {
-            headers
-        });
+        const request$ = this.http
+            .post<ConversationMessage>(uri, params, { headers })
+            .pipe(share());
 
-        return request$.pipe(
-            share(),
-            tap(arr => (this.context = arr.context)),
-            mergeMap(arr => this.toChatEntry(arr.text))
-        );
+        return request$.pipe(mergeMap(arr => this.toChatEntry(arr.text)));
     }
 
     private toChatEntry(response: string[]): Observable<ChatEntry> {
