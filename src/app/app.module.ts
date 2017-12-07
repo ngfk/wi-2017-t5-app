@@ -10,6 +10,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { ConversationService } from '../services/conversation.service';
 import { EnvService } from '../services/env.service';
+import { LoginService } from '../services/login.service';
 import { DeviceMock } from '../services/mocking/device.mock';
 import { GoogleMapsMock } from '../services/mocking/google-maps.mock';
 import { KeyboardMock } from '../services/mocking/keyboard.mock';
@@ -50,6 +51,7 @@ export function withMock(actual: any, mock: any) {
         withMock(GoogleMaps, GoogleMapsMock),
         // Custom
         EnvService,
+        LoginService,
         ConversationService
     ]
 })

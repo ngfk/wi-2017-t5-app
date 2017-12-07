@@ -12,6 +12,7 @@ import { Nav, Platform } from 'ionic-angular';
 import { IonIcon } from '../models/ion-icon';
 import { Menu, MenuEntry } from '../models/menu';
 import { Page } from '../models/page';
+import { LoginService } from '../services/login.service';
 
 @Component({
     templateUrl: 'app.html',
@@ -27,17 +28,23 @@ export class MyApp implements OnInit {
         private cd: ChangeDetectorRef,
         private platform: Platform,
         private statusBar: StatusBar,
+        private loginService: LoginService,
         private splashScreen: SplashScreen
     ) {}
 
     public async ngOnInit(): Promise<void> {
-        await this.platform.ready();
+        try {
+            await this.platform.ready();
 
-        this.initializeMenu();
+            this.initializeMenu();
+            await this.loginService.initialize();
 
-        await this.statusBar.styleDefault();
-        await this.splashScreen.hide();
-        this.cd.detectChanges();
+            await this.statusBar.styleDefault();
+            await this.splashScreen.hide();
+            this.cd.detectChanges();
+        } catch (e) {
+            console.log(e);
+        }
     }
 
     public openMenu(entry: MenuEntry): void {
