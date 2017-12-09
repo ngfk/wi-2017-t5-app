@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { IonicPage } from 'ionic-angular';
+import { IonicPage, NavController } from 'ionic-angular';
 
 import * as user1Posts from '../../assets/user1/posts.json';
 import * as user2Posts from '../../assets/user2/posts.json';
+import { Page } from '../../models/page';
 import { LoginParams, LoginService } from '../../services/login.service';
 
 @IonicPage()
@@ -13,7 +14,11 @@ import { LoginParams, LoginService } from '../../services/login.service';
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoginPage {
-    constructor(private login: LoginService, private http: HttpClient) {}
+    constructor(
+        private nav: NavController,
+        private login: LoginService,
+        private http: HttpClient
+    ) {}
 
     public async facebook(): Promise<void> {
         const images = await this.getImages(1, 8);
@@ -25,6 +30,7 @@ export class LoginPage {
         };
 
         await this.login.login(param).toPromise();
+        this.nav.setRoot(Page.Home);
     }
 
     public async twitter(): Promise<void> {
@@ -37,6 +43,7 @@ export class LoginPage {
         };
 
         await this.login.login(param).toPromise();
+        this.nav.setRoot(Page.Home);
     }
 
     private getImages(user: number, imageCount: number): Promise<Blob[]> {
