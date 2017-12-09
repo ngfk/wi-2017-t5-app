@@ -5,47 +5,36 @@ import { share } from 'rxjs/operators/share';
 
 import { EnvService } from './env.service';
 
+export interface LoginParams {
+    name: string;
+    post: string[];
+    image: Blob[];
+}
+
 @Injectable()
 export class LoginService {
+    public token: string;
     private readonly endpoint: string;
-    private _token: string;
 
     constructor(private http: HttpClient, private env: EnvService) {
         this.endpoint = this.env.backend + '/api/login';
     }
 
-    public async initialize(): Promise<void> {
-        if (this.load()) return;
-
-        const token = await this.login().toPromise();
-        this.store(token);
-    }
-
-    public login(): Observable<string> {
+    public login(params: LoginParams): Observable<string> {
         const headers = new HttpHeaders().set('Accept', 'plain/text');
 
-        return this.http
-            .post(
-                this.endpoint,
-                { deviceId: this.env.deviceId },
-                { headers, responseType: 'text' }
-            )
+        const data = new FormData();
+        data.append('name', params.name);
+        data.append('deviceId', this.env.deviceId);
+
+        params.post.forEach(p => data.append('post', p));
+        params.image.forEach(i => data.append('image', i));
+
+        const request$ = this.http
+            .post(this.endpoint, data, { headers, responseType: 'text' })
             .pipe(share());
-    }
 
-    public getToken(): string {
-        return this._token;
-    }
-
-    private load(): boolean {
-        const token = window.localStorage.getItem('token');
-        if (!token) return false;
-
-        this._token = token;
-        return true;
-    }
-
-    private store(token: string): void {
-        window.localStorage.setItem('token', token);
+        request$.subscribe(token => (this.token = token));
+        return request$;
     }
 }

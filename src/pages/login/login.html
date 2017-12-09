@@ -1,0 +1,18 @@
+<ion-header>
+    <ion-navbar [color]="'primary' | platform:'md'">
+        <ion-title>Login</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-list no-lines>
+        <button ion-item detail-none (click)="facebook()">
+            <ion-icon name="logo-facebook" item-start></ion-icon>
+            <h2>Facebook</h2>
+        </button>
+        <button ion-item detail-none (click)="twitter()">
+            <ion-icon name="logo-twitter" item-start></ion-icon>
+            <h2>Twitter</h2>
+        </button>
+    </ion-list>
+</ion-content>

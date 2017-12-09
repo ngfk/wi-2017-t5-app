@@ -5,7 +5,8 @@ import { Platform } from 'ionic-angular';
 @Injectable()
 export class EnvService {
     public readonly native: boolean;
-    public readonly backend = 'https://wi-2017-t5.eu-gb.mybluemix.net';
+    // public readonly backend = 'https://wi-2017-t5.eu-gb.mybluemix.net';
+    public readonly backend = 'http://localhost:8010';
 
     private _deviceId: string;
     private _deviceVersion: string;

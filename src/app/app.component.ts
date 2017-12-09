@@ -13,14 +13,13 @@ import { IonIcon } from '../models/ion-icon';
 import { Menu, MenuEntry } from '../models/menu';
 import { Page } from '../models/page';
 import { EnvService } from '../services/env.service';
-import { LoginService } from '../services/login.service';
 
 @Component({
     templateUrl: 'app.html',
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MyApp implements OnInit {
-    public rootPage = Page.Home;
+    public rootPage = Page.Login;
     public menu: Menu;
 
     @ViewChild(Nav) private nav: Nav;
@@ -30,7 +29,6 @@ export class MyApp implements OnInit {
         private platform: Platform,
         private statusBar: StatusBar,
         private env: EnvService,
-        private login: LoginService,
         private splashScreen: SplashScreen
     ) {}
 
@@ -39,7 +37,6 @@ export class MyApp implements OnInit {
 
         this.initializeMenu();
         await this.env.initialize();
-        await this.login.initialize();
 
         await this.statusBar.styleDefault();
         await this.splashScreen.hide();

@@ -29,7 +29,7 @@ export class ConversationService {
 
         const headers = new HttpHeaders()
             .set('Content-Type', 'application/json')
-            .set('Authorization', `Bearer ${this.login.getToken()}`);
+            .set('Authorization', `Bearer ${this.login.token}`);
 
         const params = { text: entry && entry.text };
 
