@@ -68,6 +68,11 @@ export class MyApp implements OnInit {
                 page: Page.Settings,
                 icon: IonIcon.Settings,
                 title: 'Settings'
+            },
+            {
+                page: Page.Login,
+                icon: IonIcon.LogOut,
+                title: 'Logout'
             }
         ];
     }
