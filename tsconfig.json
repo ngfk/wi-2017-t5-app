@@ -11,7 +11,8 @@
         "target": "es5",
         "typeRoots": ["../node_modules/@types"],
         "strict": true,
-        "strictNullChecks": true
+        "strictNullChecks": true,
+        "suppressImplicitAnyIndexErrors": true
     },
     "include": ["src/**/*.ts"],
     "exclude": ["node_modules", "src/**/*.spec.ts", "src/**/__tests__/*.ts"],

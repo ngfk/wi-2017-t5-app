@@ -16,11 +16,12 @@ import {
     Platform,
     TextInput
 } from 'ionic-angular';
+import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 
 import { Chat, ChatEntry, ChatType } from '../../models/chat';
 import { ConversationService } from '../../services/conversation.service';
-import { chat } from './temp';
+import { StoreService } from '../../services/store.service';
 
 @IonicPage()
 @Component({
@@ -32,7 +33,7 @@ export class ChatPage implements OnInit, OnDestroy {
     @ViewChild(Header) public headerField: Header;
     @ViewChild(Content) public contentField: Content;
     @ViewChild('input') public inputField: TextInput;
-    public chat: Chat = [];
+    public chat: Observable<Chat>;
 
     private subscriptions: Subscription[] = [];
 
@@ -42,18 +43,20 @@ export class ChatPage implements OnInit, OnDestroy {
         private platform: Platform,
         private navParams: NavParams,
         private keyboard: Keyboard,
+        private store: StoreService,
         private conversation: ConversationService
     ) {}
 
     public ngOnInit(): void {
+        this.chat = this.store.select(state => state.chat);
         this.subscriptions = [
             this.keyboard.onKeyboardShow().subscribe(this.onKeyboardShow),
             this.keyboard.onKeyboardHide().subscribe(this.onKeyboardHide)
         ];
 
-        if (this.chat.length === 0) {
+        if (this.store.getState().chat.length === 0) {
             this.conversation.message().subscribe(entry => {
-                this.chat.push(entry);
+                this.store.dispatch('CHAT_APPEND', entry);
                 this.cd.detectChanges();
                 this.contentField.scrollToBottom(400);
             });
@@ -70,10 +73,6 @@ export class ChatPage implements OnInit, OnDestroy {
         setTimeout(() => this.contentField.scrollToBottom(0), 0);
     }
 
-    public reload(): void {
-        window.location.reload();
-    }
-
     public sendAttachment(): void {}
     public sendAudio(): void {}
 
@@ -86,10 +85,10 @@ export class ChatPage implements OnInit, OnDestroy {
                 type: ChatType.Text,
                 text
             };
-            this.chat.push(newEntry);
+            this.store.dispatch('CHAT_APPEND', newEntry);
 
             this.conversation.message(newEntry).subscribe(response => {
-                this.chat.push(response);
+                this.store.dispatch('CHAT_APPEND', response);
                 this.cd.detectChanges();
                 this.contentField.scrollToBottom(400);
             });

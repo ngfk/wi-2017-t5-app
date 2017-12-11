@@ -8,7 +8,7 @@ import { share } from 'rxjs/operators/share';
 
 import { ChatEntry, ChatEntryText, ChatType } from '../models/chat';
 import { EnvService } from './env.service';
-import { LoginService } from './login.service';
+import { StoreService } from './store.service';
 
 type ConversationMessage = { text: string[] };
 
@@ -19,7 +19,7 @@ export class ConversationService {
     constructor(
         private http: HttpClient,
         private env: EnvService,
-        private login: LoginService
+        private store: StoreService
     ) {
         this.endpoint = this.env.backend + '/api/conversation';
     }
@@ -29,7 +29,7 @@ export class ConversationService {
 
         const headers = new HttpHeaders()
             .set('Content-Type', 'application/json')
-            .set('Authorization', `Bearer ${this.login.token}`);
+            .set('Authorization', `Bearer ${this.store.getState().auth}`);
 
         const params = { text: entry && entry.text };
 

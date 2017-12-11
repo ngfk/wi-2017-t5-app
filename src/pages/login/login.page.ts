@@ -31,7 +31,7 @@ export class LoginPage {
         };
 
         await this.login.login(param).toPromise();
-        this.nav.setRoot(Page.Chat);
+        this.nav.setRoot(Page.Home);
     }
 
     public async twitter(): Promise<void> {
@@ -45,7 +45,7 @@ export class LoginPage {
         };
 
         await this.login.login(param).toPromise();
-        this.nav.setRoot(Page.Chat);
+        this.nav.setRoot(Page.Home);
     }
 
     private getImages(user: number, imageCount: number): Promise<Blob[]> {

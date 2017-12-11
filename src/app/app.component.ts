@@ -13,13 +13,14 @@ import { IonIcon } from '../models/ion-icon';
 import { Menu, MenuEntry } from '../models/menu';
 import { Page } from '../models/page';
 import { EnvService } from '../services/env.service';
+import { StoreService } from '../services/store.service';
 
 @Component({
     templateUrl: 'app.html',
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MyApp implements OnInit {
-    public rootPage = Page.Login;
+    public rootPage: Page;
     public menu: Menu;
 
     @ViewChild(Nav) private nav: Nav;
@@ -29,6 +30,7 @@ export class MyApp implements OnInit {
         private platform: Platform,
         private statusBar: StatusBar,
         private env: EnvService,
+        private store: StoreService,
         private splashScreen: SplashScreen
     ) {}
 
@@ -37,13 +39,22 @@ export class MyApp implements OnInit {
 
         this.initializeMenu();
         await this.env.initialize();
+        await this.store.initialize();
 
         await this.statusBar.styleDefault();
         await this.splashScreen.hide();
+
+        this.rootPage = this.store.getState().auth ? Page.Home : Page.Login;
+
         this.cd.detectChanges();
     }
 
     public openMenu(entry: MenuEntry): void {
+        if (entry.page === Page.Login) {
+            this.store.dispatch('AUTH_DEL_TOKEN');
+            this.store.dispatch('CHAT_CLEAR');
+        }
+
         this.nav.setRoot(entry.page);
     }
 

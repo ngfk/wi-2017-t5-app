@@ -4,18 +4,13 @@
             <ion-icon name="menu"></ion-icon>
         </button>
         <ion-title>Watson</ion-title>
-        <ion-buttons end>
-            <button ion-button icon-only (click)="reload()">
-                <ion-icon name="refresh"></ion-icon>
-            </button>
-        </ion-buttons>
     </ion-navbar>
 </ion-header>
 
 <ion-content>
     <ion-list no-lines no-padding class="chat">
         <ion-item
-            *ngFor="let entry of chat"
+            *ngFor="let entry of chat | async"
             class="chat-entry chat-entry--{{entry.type}}"
             [class.chat-entry--alt]="!entry.from"
         >

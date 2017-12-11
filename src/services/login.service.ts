@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { share } from 'rxjs/operators/share';
 
 import { EnvService } from './env.service';
+import { StoreService } from './store.service';
 
 export interface LoginParams {
     name: string;
@@ -11,12 +12,17 @@ export interface LoginParams {
     image: Blob[];
 }
 
+const TOKEN_KEY = 'wi-2017-t5-token';
+
 @Injectable()
 export class LoginService {
-    public token: string;
     private readonly endpoint: string;
 
-    constructor(private http: HttpClient, private env: EnvService) {
+    constructor(
+        private http: HttpClient,
+        private env: EnvService,
+        private store: StoreService
+    ) {
         this.endpoint = this.env.backend + '/api/login';
     }
 
@@ -34,7 +40,10 @@ export class LoginService {
             .post(this.endpoint, data, { headers, responseType: 'text' })
             .pipe(share());
 
-        request$.subscribe(token => (this.token = token));
+        request$.subscribe(token => {
+            this.store.dispatch('AUTH_SET_TOKEN', token);
+        });
+
         return request$;
     }
 }

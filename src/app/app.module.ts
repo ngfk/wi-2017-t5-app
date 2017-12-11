@@ -16,6 +16,7 @@ import { GoogleMapsMock } from '../services/mocking/google-maps.mock';
 import { KeyboardMock } from '../services/mocking/keyboard.mock';
 import { SplashScreenMock } from '../services/mocking/splash-screen.mock';
 import { StatusBarMock } from '../services/mocking/status-bar.mock';
+import { StoreService } from '../services/store.service';
 import { MyApp } from './app.component';
 
 // tslint:disable only-arrow-functions
@@ -51,6 +52,7 @@ export function withMock(actual: any, mock: any) {
         withMock(GoogleMaps, GoogleMapsMock),
         // Custom
         EnvService,
+        StoreService,
         LoginService,
         ConversationService
     ]
