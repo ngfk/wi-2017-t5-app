@@ -70,9 +70,9 @@ export class ConversationService {
 
         // Cheating..
         const latMap: { [lat: number]: string } = {
-            [52.0705]: '/assets/imgs/map-den-haag.png',
-            [52.1601]: '/assets/imgs/map-leiden.png',
-            [52.0907]: '/assets/imgs/map-utrecht.png'
+            [52.0705]: 'assets/imgs/map-den-haag.png',
+            [52.1601]: 'assets/imgs/map-leiden.png',
+            [52.0907]: 'assets/imgs/map-utrecht.png'
         };
 
         const location$: Observable<ChatEntryImage> = message.location
