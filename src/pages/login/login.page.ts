@@ -21,7 +21,8 @@ export class LoginPage {
     ) {}
 
     public async facebook(): Promise<void> {
-        const images = await this.getImages(1, 8);
+        // const images = await this.getImages(1, 8);
+        const images: Blob[] = [];
 
         const param: LoginParams = {
             name: 'Wessel',
@@ -34,7 +35,8 @@ export class LoginPage {
     }
 
     public async twitter(): Promise<void> {
-        const images = await this.getImages(2, 1);
+        // const images = await this.getImages(2, 1);
+        const images: Blob[] = [];
 
         const param: LoginParams = {
             name: 'Dimitri',
