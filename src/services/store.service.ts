@@ -34,7 +34,7 @@ export class StoreService extends Store<State, ActionMap> {
 
         // Set loaded state as initial state
         const storedState = this.load();
-        this.initial = storedState;
+        this.initial = storedState || reducer();
         this.reset(this.initial);
     }
 
