@@ -53,6 +53,8 @@ export class ConversationService {
     }
 
     private toChatEntries(message: ConversationMessage): Observable<ChatEntry> {
+        if (message.profile) console.table([message.profile.scores]);
+
         const text$ = ObservableFrom(message.text).pipe(
             map(text => {
                 const entry: ChatEntryText = {
