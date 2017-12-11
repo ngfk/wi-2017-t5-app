@@ -51,7 +51,7 @@ export class ChatPage implements OnInit, OnDestroy {
             this.keyboard.onKeyboardHide().subscribe(this.onKeyboardHide)
         ];
 
-        if (this.chat.length === chat.length) {
+        if (this.chat.length === 0) {
             this.conversation.message().subscribe(entry => {
                 this.chat.push(entry);
                 this.cd.detectChanges();
