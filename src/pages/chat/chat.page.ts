@@ -32,7 +32,7 @@ export class ChatPage implements OnInit, OnDestroy {
     @ViewChild(Header) public headerField: Header;
     @ViewChild(Content) public contentField: Content;
     @ViewChild('input') public inputField: TextInput;
-    public chat: Chat = [...chat];
+    public chat: Chat = [];
 
     private subscriptions: Subscription[] = [];
 
