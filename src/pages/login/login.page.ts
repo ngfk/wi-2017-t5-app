@@ -48,6 +48,17 @@ export class LoginPage {
         this.nav.setRoot(Page.Home);
     }
 
+    public async skip(): Promise<void> {
+        const param: LoginParams = {
+            name: '<name>',
+            post: [],
+            image: []
+        };
+
+        await this.login.login(param).toPromise();
+        this.nav.setRoot(Page.Home);
+    }
+
     private getImages(user: number, imageCount: number): Promise<Blob[]> {
         const blobs: Promise<Blob>[] = [];
         for (let i = 1; i <= imageCount; i++)
