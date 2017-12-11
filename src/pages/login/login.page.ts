@@ -25,7 +25,7 @@ export class LoginPage {
         const images: Blob[] = [];
 
         const param: LoginParams = {
-            name: 'Wessel',
+            name: '<name>',
             post: [...user1Posts],
             image: [...images]
         };
@@ -39,7 +39,7 @@ export class LoginPage {
         const images: Blob[] = [];
 
         const param: LoginParams = {
-            name: 'Dimitri',
+            name: '<name>',
             post: [...user2Posts],
             image: [...images]
         };
