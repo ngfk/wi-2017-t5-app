@@ -17,7 +17,6 @@ export class StoreService extends Store<State, ActionMap> {
     public constructor() {
         super(
             reducer,
-            undefined,
             window['__REDUX_DEVTOOLS_EXTENSION__'] &&
                 window['__REDUX_DEVTOOLS_EXTENSION__']()
         );
