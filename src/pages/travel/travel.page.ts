@@ -10,8 +10,9 @@ import {
     GoogleMapOptions,
     GoogleMaps
 } from '@ionic-native/google-maps';
-import { IonicPage } from 'ionic-angular';
+import { IonicPage, NavController } from 'ionic-angular';
 
+import { Page } from '../../models/page';
 import { EnvService } from '../../services/env.service';
 
 @IonicPage()
@@ -26,6 +27,7 @@ export class TravelPage {
 
     constructor(
         private cd: ChangeDetectorRef,
+        private nav: NavController,
         private googleMaps: GoogleMaps,
         private env: EnvService
     ) {}
@@ -49,6 +51,10 @@ export class TravelPage {
 
         this.map = await creator;
         this.cd.detectChanges();
+    }
+
+    public chat(): void {
+        this.nav.setRoot(Page.Chat);
     }
 }
 

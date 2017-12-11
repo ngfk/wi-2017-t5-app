@@ -8,33 +8,39 @@
 </ion-header>
 
 <ion-content padding>
+    <h2>Watson</h2>
+    <p>Start a conversation with Watson, and find alternatives to Amsterdam!</p>
+    <button ion-button icon-start round small (tap)="chat()">
+        <ion-icon name="chatboxes"></ion-icon>
+        Chat
+    </button>
+
     <h2>Discover</h2>
-    <ion-card class="image-card">
-        <img src="assets/imgs/card-amsterdam.png">
-        <div>
-            <h1>Amsterdam</h1>
-            <p>84 Images</p>
-        </div>
-    </ion-card>
     <ion-card class="image-card">
         <img src="assets/imgs/card-rotterdam.png">
         <div>
             <h1>Rotterdam</h1>
-            <p>73 Images</p>
+            <p>41 Events</p>
         </div>
     </ion-card>
     <ion-card class="image-card">
         <img src="assets/imgs/card-the-hague.png">
         <div>
             <h1>The Hague</h1>
-            <p>46 Images</p>
+            <p>35 Events</p>
         </div>
     </ion-card>
     <ion-card class="image-card">
         <img src="assets/imgs/card-utrecht.png">
         <div>
             <h1>Utrecht</h1>
-            <p>32 Images</p>
+            <p>32 Events</p>
         </div>
     </ion-card>
+
+    <ion-fab right bottom (tap)="chat()">
+        <button ion-fab>
+            <ion-icon name="chatboxes"></ion-icon>
+        </button>
+    </ion-fab>
 </ion-content>

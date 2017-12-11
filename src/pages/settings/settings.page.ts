@@ -23,4 +23,8 @@ export class SettingsPage {
     public about(): void {
         this.nav.push(Page.About);
     }
+
+    public chat(): void {
+        this.nav.setRoot(Page.Chat);
+    }
 }

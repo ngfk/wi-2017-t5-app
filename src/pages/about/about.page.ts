@@ -1,5 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { IonicPage } from 'ionic-angular';
+import { IonicPage, NavController } from 'ionic-angular';
+
+import { Page } from '../../models/page';
 
 @IonicPage()
 @Component({
@@ -7,4 +9,10 @@ import { IonicPage } from 'ionic-angular';
     templateUrl: 'about.html',
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AboutPage {}
+export class AboutPage {
+    constructor(private nav: NavController) {}
+
+    public chat(): void {
+        this.nav.setRoot(Page.Chat);
+    }
+}
