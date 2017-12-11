@@ -1,6 +1,7 @@
 export enum ChatType {
     Text = 'text',
-    Image = 'image'
+    Image = 'image',
+    Location = 'location'
 }
 
 export interface ChatTypeMap {
@@ -25,6 +26,12 @@ export interface ChatEntryImage extends ChatEntryBase {
     readonly image: string;
 }
 
-export type ChatEntry = ChatEntryText | ChatEntryImage;
+export interface ChatEntryLocation extends ChatEntryBase {
+    readonly type: ChatType.Location;
+    readonly lat: number;
+    readonly long: number;
+}
+
+export type ChatEntry = ChatEntryText | ChatEntryImage | ChatEntryLocation;
 
 export interface Chat extends Array<ChatEntry> {}
