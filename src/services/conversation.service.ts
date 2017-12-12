@@ -4,10 +4,12 @@ import { Observable } from 'rxjs/Observable';
 import { empty as ObservableEmpty } from 'rxjs/observable/empty';
 import { from as ObservableFrom } from 'rxjs/observable/from';
 import { of as ObservableOf } from 'rxjs/observable/of';
+import { timer as ObservableTimer } from 'rxjs/observable/timer';
 import { concat } from 'rxjs/operators/concat';
 import { map } from 'rxjs/operators/map';
 import { mergeMap } from 'rxjs/operators/mergeMap';
 import { share } from 'rxjs/operators/share';
+import { zip } from 'rxjs/operators/zip';
 
 import {
     ChatEntry,
@@ -85,6 +87,9 @@ export class ConversationService {
               } as ChatEntryImage)
             : ObservableEmpty();
 
-        return text$.pipe(concat(location$));
+        return text$.pipe(
+            concat(location$),
+            zip(ObservableTimer(200, 800), item => item)
+        );
     }
 }
